@@ -94,6 +94,15 @@
 
     echo "<h1>El número tiene $digitos dígitos </h1>";
 
+    $precioConIVA = match($iva){
+        "GENERAL" => $precio + $precio * (GENERAL/100),
+        "REDUCIDO" => $precio + $precio * (REDUCIDO/100),
+        "SUPERREDUCIDO" => $precio + $precio * (SUPERREDUCIDO/100),
+        "SIN IVA" => $precio
+    };
+    
+    
+    
     // $numero_aleatorio_decimales = rand(10,100)/10;
     
     $n = rand(1,3);

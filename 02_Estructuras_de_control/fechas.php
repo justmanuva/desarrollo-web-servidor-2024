@@ -79,7 +79,7 @@
          */
 
         //Estructura match
-        $dia_español = match ($dia){
+        $dia_espanhol = match ($dia){
             "Monday" => "Lunes",
             "Tuesday" => "Martes",
             "Wednesday" => "Miércoles",
