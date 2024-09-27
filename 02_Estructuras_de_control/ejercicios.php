@@ -44,9 +44,20 @@
       11 => "Noviembre",
       12 => "Diciembre"
     }
-
-
-
   ?>
+
+  <!--
+        EJERCICIO 2: MOSTRAR EN UNA LISTA LOS NUMEROS MULTIPLOS DE 3 
+        USANDO WHILE E IF
+    -->
+
+    <!--
+        EJERCICIO 3: CALCULAR LA SUMA DE LOS NUMEROS PARES ENTRE 1 Y 20
+    -->
+        
+    <!--
+        EJERCICIO 4: CALCULAR EL FACTORIAL DE 6 CON WHILE
+    -->
+        
 </body>
 </html>
