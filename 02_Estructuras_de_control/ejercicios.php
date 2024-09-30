@@ -30,29 +30,70 @@
     };
 
     $mes = date("n");
-    $mes = match($mes) {
-      "1" => "Enero",
-      "2" => "Febrero",
-      "3" => "Marzo",
-      "4" => "Abril",
-      "5" => "Mayo",
-      "6" => "Junio",
-      "7" => "Julio",
-      "8" => "Agosto",
-      "9" => "Septiembre",
-      "10" => "Octubre",
-      "11" => "Noviembre",
-      "12" => "Diciembre"
-    };
-
-    $dia_n = date("j");
-    $anno = date("Y");
-
-    echo "<h3>$dia $dia_n de $mes de $anno</h3>";
-
-
-
-
+    /* $mes = match($mes) {
+      1 => "Enero",
+      2 => "Febrero",
+      3 => "Marzo",
+      4 => "Abril",
+      5 => "Mayo",
+      6 => "Junio",
+      7 => "Julio",
+      8 => "Agosto",
+      9 => "Septiembre",
+      10 => "Octubre",
+      11 => "Noviembre",
+      12 => "Diciembre"
+    }; */
   ?>
+
+  <h3>EJERCICIO 2:</h3> 
+  <p>MOSTRAR EN UNA LISTA LOS NUMEROS MULTIPLOS DE 3 USANDO WHILE E IF</p>
+    <ul>
+      <?php
+        $i = 1;
+        echo "<ul>";
+        while ($i <= 100){
+          if($i <= 100){
+            echo "<li>$i</li>";
+          }
+          $i++;
+        }
+      ?>
+    </ul>
+
+  <h3>EJERCICIO 3:</h3> 
+  <p>CALCULAR LA SUMA DE LOS NUMEROS PARES ENTRE 1 Y 20</p>
+    <ul>
+      <?php
+        $i = 1;
+        $suma = 0;
+        while ($i <= 20){
+          if($i %2 == 0){
+            $suma += $i;
+          }
+          $i++;
+        }
+        echo "<p>SOLUCIÓN: LA SUMA ES $suma</p>";
+      ?>
+    </ul>
+     
+    
+  <h3>EJERCICIO 4:</h3> 
+  <p>CALCULAR EL FACTORIAL DE 6 CON WHILE</p>
+  <?php
+  // 3! = 1x2x3 = 6
+  // 4! = 1x2x3x4 = 24
+
+  $factorial = 6;
+  $resultado = 1;
+  $i = 1;
+  while($i <= $factorial){
+    $resultado *= $i; # $resultado = $resultado * $i
+    $i++;
+  }
+  echo "<p>SOLUCIÓN: EL FACTORIAL DE $factorial ES $resultado</p>";
+  ?>
+
+
 </body>
 </html>
