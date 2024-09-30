@@ -94,6 +94,29 @@
   echo "<p>SOLUCIÓN: EL FACTORIAL DE $factorial ES $resultado</p>";
   ?>
 
+  <h3>EJERCICIO 5</h3>
+  <p>MUESTRA POR PANTALLA LOS 50 PRIMEROS NÚMEROS PRIMOS</p>
+
+  <?php
+    /**
+     * 4 %2 = 0   4 NO ES PRIMO
+     * 4 %3 = 1
+     * 
+     * 5 % 2 = 1  5 SI ES PRIMO
+     * 5 % 3 = 2
+     * 5 % 4 = 1
+     * 
+     * BUCLE DE 2 A N-1
+     * 
+     * $n = 7
+     * DESDE 2 HASTA $n-1
+     *  COMPROBAR SI 7 TIENE DIVISORES QUE DEN DE RESTO 0
+     *    SI EXISTE ENTONCES DEVOLVER FALSO
+     *    ELSE DEVOLVER TRUE
+     * FIN
+     */
+  ?>
+
 
 </body>
 </html>
