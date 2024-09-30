@@ -68,14 +68,14 @@
     }
     echo "</ul>"; */
     
-    echo "<ul>";
+    /* echo "<ul>";
     for($i = 1; ;){
       if ($i > 10){
         break;
       }
       echo "<li>$li</li>";
     }
-    echo "</ul>";
+    echo "</ul>"; */
   ?>
 
 

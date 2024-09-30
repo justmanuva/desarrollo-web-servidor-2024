@@ -115,6 +115,32 @@
      *    ELSE DEVOLVER TRUE
      * FIN
      */
+
+    // BUCLE DESDE 2 HASTA EL INFINITO Y MÁS ALLÁ
+    
+    $numero = 2;
+    $numerosPrimos = 0;
+
+    echo "<ol>";
+    while($numerosPrimos < 50){
+      $esPrimo = true;
+      for($i = 2; $i < $numero; $i++){
+        if($numero % $i == 0){
+          $esPrimo = false;
+          break;
+        }
+      }
+      if($esPrimo){
+        $numerosPrimos++;
+        echo "<li>$numero</li>";
+      } 
+      $numero++;
+    }
+    echo "</ol>";
+
+    // N+N -> 0(N²)   Algoritmos de computación que te dice si renta hacer Nº bucles
+    
+    // var_dump($esPrimo);
   ?>
 
 
