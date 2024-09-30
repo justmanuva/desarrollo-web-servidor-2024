@@ -8,6 +8,7 @@
       error_reporting( E_ALL );
       ini_set( "display_errors", 1 );
   ?>
+
 </head>
 <body>
   <h1>Lista con WHILE</h1>
@@ -25,13 +26,16 @@
   <?php
     $i = 1;
 
+
     echo "<ul>";
+
     while($i <= 10):
       echo "<li>$i</li>";
       $i++;
     endwhile;
     echo "</ul>";
   ?>
+
 
   <h1>Lista con FOR</h1>
   <?php
