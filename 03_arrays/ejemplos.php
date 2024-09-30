@@ -25,20 +25,14 @@
 
     /*$animales = ["Perro", "Gato", "Ornitorrinco", "Suricato", "Capibara"]; */
     $animales = [
-    "A01" => "Perro",
-    "A02" => "Gato",
-    "A03" => "Ornitorrinco",
-    "A04" => "Suricato",
-    "A05" => "Capibara",
-    ];
-    /* $animales = [
-    1.4 => "Perro",
-    true => "Gato",
-    false => "Ornitorrinco",
-    2e2 => "Suricato",
-    "A05" => "Capibara",
-    ]; */
-    print_r($animales);
+      "A01" => "Perro",
+      "A02" => "Gato",
+      "A03" => "Ornitorrinco",
+      "A04" => "Suricato",
+      "A05" => "Capibara"
+  ];
+  echo "<p>". $animales["A03"]."</p>";
+  print_r($animales);
   ?>
 </body>
 </html>
