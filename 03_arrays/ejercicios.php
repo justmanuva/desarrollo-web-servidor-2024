@@ -89,51 +89,25 @@
       <tbody>
             <?php
               foreach($notas as $alumno => $nota){
-                echo "<tr>";
+                if ($nota < 5) echo '<tr class="suspenso">';
+                else echo '<tr class="aprobado">';
+
                 echo "<td>$alumno</td>";
                 echo "<td>$nota</td>";
-                if ($nota < 5) echo '<td class="suspenso">SUSPENSO</td>';
+
+                if ($nota < 5){
+                  echo '<td>SUSPENSO</td>';
+                } 
                 else {
-                  if ($nota == 5) echo '<td class="aprobado">SUFICIENTE</td>';
-                  if ($nota == 6) echo '<td class="aprobado">BIEN</td>';
-                  if ($nota > 6 && $nota <9) echo '<td class="aprobado">NOTABLE</td>';
-                  if ($nota > 8) echo '<td class="aprobado">SOBRESALIENTE</td>';
+                  if ($nota == 5) echo '<td>SUFICIENTE</td>';
+                  if ($nota == 6) echo '<td>BIEN</td>';
+                  if ($nota > 6 && $nota <9) echo '<td>NOTABLE</td>';
+                  if ($nota > 8) echo '<td>SOBRESALIENTE</td>';
                 }
                 echo "</tr>";
               }
             ?>
       </tbody>
     </table>
-
-    <table>
-      <caption>Notas</caption>
-      <thead>
-        <tr>
-          <th>Alumnos</th>
-          <th>Notas</th>
-        </tr>
-      </thead>
-      <tbody>
-            <?php
-              foreach($notas as $alumno => $nota){
-                echo "<tr>";
-                echo "<td>$alumno</td>";
-                echo "<td>$nota</td>";
-                if ($nota < 5) echo '<td class="suspenso">SUSPENSO</td>';
-                else {
-                  if ($nota == 5) echo '<td class="aprobado">SUFICIENTE</td>';
-                  if ($nota == 6) echo '<td class="aprobado">BIEN</td>';
-                  if ($nota > 6 && $nota <9) echo '<td class="aprobado">NOTABLE</td>';
-                  if ($nota > 8) echo '<td class="aprobado">SOBRESALIENTE</td>';
-                }
-                echo "</tr>";
-              }
-            ?>
-      </tbody>
-    </table>
-
-    <!-- APLICAR COLOR A TODA lA FILA -->
-
-
   </body>
 </html>
