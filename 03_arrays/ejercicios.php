@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicios</title>
     <link href="./estilos.css" rel="stylesheet" type="text/css">
+    <?php
+      error_reporting( E_ALL );
+      ini_set( "display_errors", 1 );
+    ?>
   </head>
   <body>
     <!-- RECORDATORIO!!! EL VIERNES VEMOS CÓMO ORDENAR TABLAS -->  
@@ -42,6 +46,12 @@
       </thead>
       <tbody>
             <?php
+              // sort($asignaturas); Ordena con números las claves
+              // rsort($asignaturas); Reverse sort
+              // asort($asignaturas); Lo ordena por los valores pero mostrando las verdaderas claves
+              // arsort($asignaturas); Reverse asort
+              // ksort($asignaturas); Lo ordena por las keys
+              // krsort($asignaturas); Reverse ksort
               foreach($asignaturas as $asignatura => $profesor){
                 echo "<tr>";
                 echo "<td>$asignatura</td>";
@@ -84,6 +94,7 @@
         <tr>
           <th>Alumnos</th>
           <th>Notas</th>
+          <th>Estado</th>
         </tr>
       </thead>
       <tbody>
@@ -107,6 +118,39 @@
                 echo "</tr>";
               }
             ?>
+      </tbody>
+    </table>
+    
+    <br>
+
+    <table>
+      <caption>Notas</caption>
+      <thead>
+        <tr>
+          <th>Alumnos</th>
+          <th>Notas</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+            <?php
+              foreach($notas as $alumno => $nota){ ?>
+                <tr class="<?php if($nota < 5) echo "suspenso"; else echo "aprobado";?>">
+                  <td><?php echo $alumno?></td>
+                  <td><?php echo $nota?></td>
+                  <td>
+                    <?php
+                      if($nota < 5) echo "SUSPENSO";
+                      else {
+                        if ($nota == 5) echo 'SUFICIENTE';
+                        if ($nota == 6) echo 'BIEN';
+                        if ($nota > 6 && $nota <9) echo 'NOTABLE';
+                        if ($nota > 8) echo 'SOBRESALIENTE';
+                      }
+                    ?>
+                  </td>
+                </tr>
+              <?php }?>
       </tbody>
     </table>
   </body>
