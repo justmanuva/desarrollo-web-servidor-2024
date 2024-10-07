@@ -76,19 +76,17 @@
       </thead>
       <tbody>
         <?php
-          foreach($videojuegos as $videojuego) {
-            //echo $videojuego[0]; también podemos sacar así las columnas
+          foreach($videojuegos as $videojuego){
+            //echo $videojuego[0]; para mostrar alguna columna
             
-            //list descompone el array en varias variables
-            list($titulo, $categoria, $precio, $tipo) = $videojuego;
-            echo "<tr>";
-            echo "<td>$titulo</td>";
-            echo "<td>$categoria</td>";
-            echo "<td>$precio</td>";
-            echo "<td>$tipo</td>";
-            echo "</tr>";
-          }
-        ?>
+            list($titulo, $categoria, $precio,$tipo) = $videojuego; ?>
+            <tr>
+                <td><?php echo $titulo ?></td>
+                <td><?php echo $categoria ?></td>
+                <td><?php echo $precio ?></td> 
+                <td><?php echo $tipo ?></td>
+            </tr>
+        <?php }  ?>
       </tbody>
     </table>
   </body>
