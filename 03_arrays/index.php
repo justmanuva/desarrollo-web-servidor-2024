@@ -32,6 +32,22 @@
                     Ejercicios de arrays.
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="arrays_bidimensionales.php">arrays_bidimensionales.php</a>
+                </td>
+                <td>
+                    Ejercicios de arrays bidimensionales.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="peliculas.php">peliculas.php</a>
+                </td>
+                <td>
+                    Ejercicios de arrays bidimensionales, contexto: peliculas.
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
