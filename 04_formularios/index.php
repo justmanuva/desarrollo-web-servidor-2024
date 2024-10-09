@@ -32,6 +32,22 @@
                     Ejercicios de potencias.
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="edades.php">edades.php</a>
+                </td>
+                <td>
+                    Ejercicio de edades.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="tabla_multiplicar.php">tabla_multiplicar.php</a>
+                </td>
+                <td>
+                    Ejercicio de tabla de multiplicar.
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
