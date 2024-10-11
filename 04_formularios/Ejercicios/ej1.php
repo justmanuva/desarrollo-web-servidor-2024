@@ -16,10 +16,13 @@
 <form action="" method="post">
   <label for="numero1">Introduce el primer número</label>
   <input type="number" name="numero1" id="numero1"><br><br>
+
   <label for="numero2">Introduce el segundo número</label>
   <input type="number" name="numero2" id="numero2"><br><br>
+  
   <label for="numero3">Introduce el tercer número</label>
   <input type="number" name="numero3" id="numero3"><br><br>
+  
   <input type="submit" value="Comprobar número más alto">
 </form>
 
