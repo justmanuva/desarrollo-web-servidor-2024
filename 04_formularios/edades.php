@@ -28,22 +28,22 @@
     <input type="text" name="edad" id="edad" placeholder="introduzca su edad"><br><br>
     <input type="submit" value="Comprobar">
   </form>
-
+  
   <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
       $nombre = $_POST["nombre"];
       $edad = $_POST["edad"];
 
       $resultado = match(true) {
-        $edad <18 => "es menor de edad",
+        $edad < 18 => "es menor de edad",
         $edad >= 18 and $edad < 65 => "es mayor de edad",
         $edad >= 65 => "se ha jubilado"
       };
       echo "<h1>$nombre $resultado</h1>";
-
-      /* if ($edad < 18) echo "<h1>$nombre es menor de edad</h1>";
-      else if ($edad >= 18 and $edad < 65) echo "<h1>$nombre es mayor de edad</h1>";
-      else echo "<h1>$nombre se ha jubilado</h1>"; */
+    
+      // if ($edad < 18) echo "<h1>$nombre es menor de edad</h1>";
+      // else if ($edad >= 18 and $edad < 65) echo "<h1>$nombre es mayor de edad</h1>";
+      // else echo "<h1>$nombre se ha jubilado</h1>";
     }
   ?>
 

@@ -18,7 +18,15 @@
         <tbody>
             <tr>
                 <td>
-                    <a href="ejemplo.php">ejemplo.php</a>
+                    <a href="./Ejercicios/index.php">Ejercicios</a>
+                </td>
+                <td>
+                    Ejercicios de Formularios.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="ejemplos.php">ejemplos.php</a>
                 </td>
                 <td>
                     Ejemplos de formularios.
@@ -42,10 +50,34 @@
             </tr>
             <tr>
                 <td>
-                    <a href="tabla_multiplicar.php">tabla_multiplicar.php</a>
+                    <a href="tabla_de_multiplicar.php">tabla_de_multiplicar.php</a>
                 </td>
                 <td>
                     Ejercicio de tabla de multiplicar.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="iva.php">iva.php</a>
+                </td>
+                <td>
+                    Ejercicio de IVA.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="productos.php">productos.php</a>
+                </td>
+                <td>
+                    Ejercicio de productos.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="maximo.php">maximo.php</a>
+                </td>
+                <td>
+                    Ejercicio de maximo.
                 </td>
             </tr>
         </tbody>
