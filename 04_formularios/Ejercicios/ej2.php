@@ -40,14 +40,13 @@ Los múltiplos de 2 entre 3 y 10 son: 4, 6, 8 y 10 -->
     $C = $_POST["numeroC"];
 
     $multiplos = "";
-    if ($C > $A and $C < $B) {
-      for ($i = $C; $i <= $B; $i += $C) {
-        if($i > $A){
-          $multiplos .= $i.", ";
-        } 
-      }
-      echo "<h1>Los multiplos de $C entre $A y $B son: $multiplos";
-    } else echo "<h1>ERROR: Longitudes incorrectas</h1>";
+    
+    for ($i = $C; $i <= $B; $i += $C) {
+      if($i > $A){
+        $multiplos .= $i.", ";
+      } 
+    }
+    echo "<h1>Los multiplos de $C entre $A y $B son: $multiplos</h1>";
   }
 ?>
 

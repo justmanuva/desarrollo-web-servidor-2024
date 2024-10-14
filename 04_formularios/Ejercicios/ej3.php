@@ -40,7 +40,7 @@ todos los números primos dentro de ese rango (incluidos los extremos).
       $maximo = max($numero1, $numero2);
 
       for ($i = $minimo; $i <= $maximo; $i++) {
-        for ($j = 2; $j < $i; $j++) {
+        for ($j = 2; $j < $i/2; $j++) {
           if ($i % $j == 0) $esPrimo = false;
         }
         if ($esPrimo) $primos.= "$i, ";

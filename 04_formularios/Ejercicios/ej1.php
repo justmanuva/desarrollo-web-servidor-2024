@@ -32,7 +32,7 @@
     $numero2 = $_POST["numero2"];
     $numero3 = $_POST["numero3"];
 
-    echo "<h1>Numero más alto: " . max($numero1, $numero2, $numero3). "</h1>";
+    echo "<h1>Numero más alto: " . max($numero1, $numero2, $numero3) . "</h1>";
   }
 ?>
 
