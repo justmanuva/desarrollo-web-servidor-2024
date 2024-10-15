@@ -24,8 +24,22 @@ En los select se podrá elegir entre: CELSIUS, KELVIN y FAHRENHEIT. -->
 
 
 <form action="" method="post">
-  <label for="ingresar">Ingresa número :</label>
-  <input type="number" name="temperatura" id="temperatura"><br><br>
+  <label for="temperatura">Temperatura:</label>
+  <input type="text" name="temperatura" id="temperatura"><br><br>
+
+  <label for="origen">De: </label>
+  <select name="unidad_old" id="unidad_old">
+    <option value="celsius">Celsius</option>
+    <option value="kelvin">Kelvin</option>
+    <option value="fahrenheit">Fahrenheit</option>
+  </select>
+
+  <label for="destino">A: </label>
+  <select name="unidad_new" id="unidad_new">
+    <option value="celsius">Celsius</option>
+    <option value="kelvin">Kelvin</option>
+    <option value="fahrenheit">Fahrenheit</option>
+  </select><br><br>
   
   <input type="submit" value="Transformar">
 </form>
