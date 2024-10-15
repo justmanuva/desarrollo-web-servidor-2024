@@ -56,6 +56,14 @@
                     Ejemplo de formularios y tablas para el examen.
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="primosRango.php">primosRango.php</a>
+                </td>
+                <td>
+                    Ejercicio de rango de primos hecho por Alejandra.
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
