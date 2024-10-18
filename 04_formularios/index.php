@@ -66,6 +66,14 @@
             </tr>
             <tr>
                 <td>
+                    <a href="iva_get.php">iva_get.php</a>
+                </td>
+                <td>
+                    Ejercicio de IVA con GET.
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <a href="productos.php">productos.php</a>
                 </td>
                 <td>
