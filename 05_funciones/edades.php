@@ -7,6 +7,4 @@
         };
         echo "<h1>$nombre $resultado</h1>";
     }
-    
-
 ?>
