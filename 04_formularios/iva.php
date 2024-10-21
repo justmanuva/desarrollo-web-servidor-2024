@@ -33,13 +33,13 @@
       $precio = $_POST["precio"];
       $iva = $_POST["iva"];
 
-      //CONTROLAR COMO EN EL IVA_GET
-      $pvp = match($iva) {
-        "general" => $precio * GENERAL,
-        "reducido" => $precio * REDUCIDO,
-        "superreducido" => $precio * SUPERREDUCIDO
-      };
-
+      if ($precio != "" and $iva != "") {
+        $pvp = match($iva) {
+          "general" => $precio * GENERAL,
+          "reducido" => $precio * REDUCIDO,
+          "superreducido" => $precio * SUPERREDUCIDO
+        };
+      }
       echo "El PVP es $pvp";
     }
   ?>

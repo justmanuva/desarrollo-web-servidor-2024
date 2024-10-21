@@ -18,14 +18,6 @@
         <tbody>
             <tr>
                 <td>
-                    <a href="./Ejercicios/index.php">Ejercicios</a>
-                </td>
-                <td>
-                    Ejercicios de Formularios.
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <a href="ejemplos.php">ejemplos.php</a>
                 </td>
                 <td>
@@ -94,6 +86,54 @@
                 </td>
                 <td>
                     Ejercicio de IRPF.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="irpf_get.php">irpf_get.php</a>
+                </td>
+                <td>
+                    Ejercicio de IRPF con GET.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="mayorDe3.php">mayorDe3.php</a>
+                </td>
+                <td>
+                    Ejercicio de decir cuál es mayor de los 3.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="multiplos.php">multiplos.php</a>
+                </td>
+                <td>
+                    Ejercicio de multiplos.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="primosRango.php">primosRango.php</a>
+                </td>
+                <td>
+                    Ejercicio de decir rango de primos.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="temperaturas.php">temperaturas.php</a>
+                </td>
+                <td>
+                    Ejercicio de las temperaturas.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="varios_formularios.php">varios_formularios.php</a>
+                </td>
+                <td>
+                    Ejercicio de varios formularios.
                 </td>
             </tr>
         </tbody>
