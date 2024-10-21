@@ -7,6 +7,10 @@
     <?php
       error_reporting( E_ALL );
       ini_set( "display_errors", 1 );
+
+      //Para utilizar la función dentro de 05_funciones/...
+      require("../05_funciones/temperaturas.php");
+      require("../05_funciones/edades.php");
     ?>
 </head>
 <body>    
@@ -18,16 +22,16 @@
 
         <label for="origen">De: </label>
         <select name="inicial" id="inicial">
-            <option value="celsius">Celsius</option>
-            <option value="kelvin">Kelvin</option>
-            <option value="fahrenheit">Fahrenheit</option>
+            <option value="C">Celsius</option>
+            <option value="K">Kelvin</option>
+            <option value="F">Fahrenheit</option>
         </select>
 
         <label for="destino">A: </label>
         <select name="final" id="final">
-            <option value="celsius">Celsius</option>
-            <option value="kelvin">Kelvin</option>
-            <option value="fahrenheit">Fahrenheit</option>
+            <option value="C">Celsius</option>
+            <option value="K">Kelvin</option>
+            <option value="F">Fahrenheit</option>
         </select><br><br>
         <input type="hidden" name="accion" value="formulario_temperaturas">
         <input type="submit" value="Convertir">
@@ -50,6 +54,8 @@
             if($_POST["accion"] == "formulario_edades") {
                 $nombre = $_POST["nombre"];
                 $edad = $_POST["edad"];
+
+                comprobarEdad($nombre, $edad);
             }
 
             // Formulario de temperaturas
@@ -57,6 +63,8 @@
                 $temperatura = $_POST["temperatura"];
                 $inicial = $_POST["inicial"];
                 $final = $_POST["final"];
+
+                convertirTemperatura($temperatura, $inicial, $final);
             }
         }
     ?>
