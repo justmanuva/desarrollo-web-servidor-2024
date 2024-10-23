@@ -32,6 +32,22 @@
                     Ejercicio de edades.
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="potencias.php">potencias.php</a>
+                </td>
+                <td>
+                    Ejercicio de potencias.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="economia.php">economia.php</a>
+                </td>
+                <td>
+                    Ejercicio de funciones de economía.
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>

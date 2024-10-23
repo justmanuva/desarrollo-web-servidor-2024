@@ -7,6 +7,8 @@
   <?php
       error_reporting( E_ALL );
       ini_set( "display_errors", 1 );
+
+      require("../05_funciones/potencias.php");
   ?>
 </head>
 <body>
@@ -36,17 +38,34 @@
        */
 
       if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $tmp_base = $_POST["base"];
+        $tmp_exponente = $_POST["exponente"];
 
-        $base = $_POST["base"];
-        $exponente = $_POST["exponente"];
-        $resultado = 1;
-
-        for($i = 0; $i < $exponente; $i++) {
-          $resultado *= $base;
-
+        // Primero las condiciones de errores para más limpieza
+        if ($tmp_base == "") echo "<p>La base es obligatoria</p>";
+        else {
+          //Para validar que sea un número (0 da falso, por eso: !==)
+          if (filter_var($tmp_base, FILTER_VALIDATE_INT) === FALSE) {
+            echo "<p>La base debe ser un número</p>";
+          } 
+          else $base = $tmp_base;
         }
 
-        echo "<h1>El resultado es $resultado</h1>";
+        if ($tmp_exponente == "") echo "<p>El exponente es obligatorio</p>";
+        else {
+          //Para validar que sea un número (0 da falso, por eso: !==)
+          if (filter_var($tmp_exponente, FILTER_VALIDATE_INT) === FALSE) {
+            echo "<p>La base debe ser un número</p>";
+          } else {
+            if ($tmp_exponente < 0) echo "<p>El exponente debe ser mayor o igual que cero</p>";
+            else $exponente = $tmp_exponente;
+          }
+        }
+
+        if (isset($base) and isset($exponente)) {
+          $resultado = potencia($base, $exponente);
+          echo "<h1>El resultado es $resultado</h1>";
+        }
       }
     ?>
 </body>

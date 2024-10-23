@@ -34,9 +34,43 @@
             <option value="F">Fahrenheit</option>
         </select><br><br>
         <input type="hidden" name="accion" value="formulario_temperaturas">
-        <input type="submit" value="Convertir">
+        <input type="submit" value="Convertir"><br><br>
     </form>
 
+    <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Formulario de temperaturas
+            if($_POST["accion"] == "formulario_temperaturas") {
+                $temperatura = $_POST["temperatura"];
+                $inicial = $_POST["inicial"];
+                $final = $_POST["final"];
+    
+                //Control de errores
+                if ($temperatura != "") {
+                    if (is_numeric($temperatura)) {
+                        if ($inicial == "C" and $temperatura >= -273.15) {
+                            echo convertirTemperatura($temperatura, $inicial, $final);
+                        } elseif ($inicial == "C" and $temperatura < -273.15) {
+                            echo "<p>La temperatura no puede ser inferior a -273.15 C</p>";
+                        }
+                        if ($inicial == "K" and $temperatura >= 0) {
+                            echo convertirTemperatura($temperatura, $inicial, $final);
+                        } elseif ($inicial == "K" and $temperatura < 0) {
+                            echo "<p>La temperatura no puede ser inferior a 0 K</p>";
+                        }
+                        if ($inicial == "F" and $temperatura >= -459.67) {
+                            echo convertirTemperatura($temperatura, $inicial, $final);
+                        } elseif ($inicial == "F" and $temperatura < -459.67) {
+                            echo "<p>La temperatura no puede ser inferior a -459.67 F</p>";
+                        }
+                    } else "<p>La temperatura debe ser un número</p>";
+                } else echo "<p>Falta la temperatura</p>";
+            }
+        }
+        // En otro fichero nuevo, poner todos los demás formularios
+        // y hacerlo con funciones (Por lo menos con 5 formularios)
+    ?>
+    
     <h1>Formulario de edades</h1>
 
     <form action="" method="post">
@@ -55,22 +89,16 @@
                 $nombre = $_POST["nombre"];
                 $edad = $_POST["edad"];
 
-                comprobarEdad($nombre, $edad);
-            }
-
-            // Formulario de temperaturas
-            if($_POST["accion"] == "formulario_temperaturas") {
-                $temperatura = $_POST["temperatura"];
-                $inicial = $_POST["inicial"];
-                $final = $_POST["final"];
-
-                convertirTemperatura($temperatura, $inicial, $final);
+                if($nombre != "" && $edad != "") {
+                    comprobarEdad($nombre, $edad);
+                } else echo "<p>Faltan datos</p>";
             }
         }
-
-        // En otro fichero nuevo, poner todos los demás formularios
-        // y hacerlo con funciones (Por lo menos con 5 formularios)
     ?>
+
+    
+
+    
 
 </body>
 </html>

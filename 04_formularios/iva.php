@@ -9,10 +9,7 @@
     error_reporting( E_ALL );
     ini_set( "display_errors", 1 );
 
-    //  Declaración de constantes
-    define("GENERAL", 1.21);
-    define("REDUCIDO", 1.1);
-    define("SUPERREDUCIDO", 1.04);
+    require("../05_funciones/economia.php");
   ?>
 </head>
 <body>
@@ -23,24 +20,38 @@
     <select name="iva" id="iva">
       <option value="general">General</option>
       <option value="reducido">Reducido</option>
-      <option value="superreducido">Superreducido</option>
+      <option value="SUPERREDUCIDO">SUPERREDUCIDO</option>
     </select><br><br>
     <input type="submit" value="Calcular PVP">
   </form>
 
   <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-      $precio = $_POST["precio"];
-      $iva = $_POST["iva"];
+      $tmp_precio = $_POST["precio"];
+      $tmp_iva = $_POST["iva"];
 
-      if ($precio != "" and $iva != "") {
-        $pvp = match($iva) {
-          "general" => $precio * GENERAL,
-          "reducido" => $precio * REDUCIDO,
-          "superreducido" => $precio * SUPERREDUCIDO
-        };
+      if ($tmp_precio == "") echo "<p>El precio es obligatorio</p>";
+      else {
+        if (filter_var($tmp_precio, FILTER_VALIDATE_FLOAT) === FALSE) {
+          echo "<p>El precio debe ser un número</p>";
+        }
+        else {
+          if ($tmp_precio < 0) echo "<p>El precio debe ser mayor a 0</p>";
+          else $precio = $tmp_precio;
+        }
       }
-      echo "El PVP es $pvp";
+
+      if ($tmp_iva == "") echo "<p>El IVA es obligatorio</p>";
+      else {
+        // Para comprobar valores de forma más eficiente (in_array)
+        $valores_validos_iva = ["general", "reducido", "superreducido"];
+        if (!in_array($tmp_iva, $valores_validos_iva)) {
+          echo "<p>El IVA solo puede ser: GENERAL, REDUCIDO, SUPERREDUCIDO</p>";
+        } else $iva = $tmp_iva;
+      }
+      if(isset($precio) and isset($iva)){
+        echo calcularPVP($precio, $iva);
+      }
     }
   ?>
 </body>

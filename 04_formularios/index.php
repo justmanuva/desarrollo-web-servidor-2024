@@ -82,7 +82,7 @@
             </tr>
             <tr>
                 <td>
-                    <a href="irpf.php">irpf.php</a>
+                    <a href="calculadora_irpf.php">calculadora_irpf.php</a>
                 </td>
                 <td>
                     Ejercicio de IRPF.
