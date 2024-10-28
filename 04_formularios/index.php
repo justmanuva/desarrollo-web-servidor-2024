@@ -136,6 +136,14 @@
                     Ejercicio de varios formularios.
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="usuarios.php">usuarios.php</a>
+                </td>
+                <td>
+                    Ejercicios de usuarios.
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
