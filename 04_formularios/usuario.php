@@ -169,16 +169,63 @@
                     }
                 }
 
-                if($tmp_fecha_nacimiento == '') {
+                if ($tmp_fecha_nacimiento == "") {
                     $err_fecha_nacimiento = "La fecha de nacimiento es obligatoria";
                 } else {
                     $patron = "/^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$/";
-                    if(!preg_match($patron,$tmp_fecha_nacimiento)) {
+                    if (!preg_match($patron, $tmp_nombre)) {
+                        $err_fecha_nacimiento = "Formato de fecha incorrecto";
+                    } else {
+                        $fecha_actual = date("Y-m-d");
+                        // Asigna variables a los 3 campos del explode (explode == split)
+                        list ($anno_actual, $mes_actual, $dia_actual) = explode("-", $fecha_actual);
+                        list ($anno, $mes, $dia) = explode("-", $tmp_fecha_nacimiento);
+                    
+                        if($anno_actual - $anno_nacimiento <= 120 and $anno_actual - $anno_nacimiento > 0) {
+                            $fecha_nacimiento = $tmp_fecha_nacimiento;
+                        } elseif($anno_actual - $anno > 120) {
+                            $err_fecha_nacimiento = "No puedes tener más de 120 años";
+                        } elseif($anno_actual - $anno < 0) {
+                            $err_fecha_nacimiento = "No puedes tener menos de 0 años";
+                        } elseif($anno_actual - $anno == 121) {
+                            if($mes_actual - $mes < 0) {
+                                $fecha_nacimiento = $tmp_fecha_nacimiento;
+                            } elseif($mes_actual - $mes > 0) {
+                                $err_fecha_nacimiento = "No puedes tener más de 120 años";
+                            } elseif($mes_actual - $mes == 0) {
+                                if($dia_actual - $dia < 0) {
+                                    $fecha_nacimiento = $tmp_fecha_nacimiento;
+                                } elseif($dia_actual - $dia >= 0) {
+                                    $err_fecha_nacimiento = "No puedes tener más de 120 años";
+                                }
+                            }
+                        } elseif ($anno_actual - $anno < 18) {
+                            $err_fecha_nacimiento = "No puedes ser menor de edad";
+                        } elseif ($anno_actual - $anno == 0) {
+                            if ($mes_actual - $mes < 0) {
+                                $err_fecha_nacimiento = "No puedes ser menor de edad";
+                            } elseif ($mes_actual - $mes == 0) {
+                                if($dia_actual - $dia < 0) {
+                                    $fecha_nacimiento = $tmp_fecha_nacimiento;
+                                } elseif($dia_actual - $dia >= 0) {
+                                    $err_fecha_nacimiento = "No puedes ser menor de edad";
+                                }
+                            } elseif ($mes_actual - $mes > 0) {
+                                $fecha_actual = $tmp_fecha_nacimiento;
+                            }
+                        }
+                    }
+                }
+
+                //Opción más completa (Próximamente)
+                /* if($tmp_fecha_nacimiento == '') {
+                    $err_fecha_nacimiento = "La fecha de nacimiento es obligatoria";
+                } else {
+                    $patron = "/^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$/";
+                    if(!preg_match($patron, $tmp_fecha_nacimiento)) {
                         $err_fecha_nacimiento = "El formato de la fecha es incorrecto";
                     } else {
-                        $fecha_actual = date("Y-m-d"); // 2024 25 10
-
-                        // Asigna variables a los 3 campos del explode (explode == split)
+                        $fecha_actual = date("Y-m-d"); // 2024-10-30
                         list($anno_actual,$mes_actual,$dia_actual) = 
                             explode('-',$fecha_actual);
                         list($anno_nacimiento,$mes_nacimiento,$dia_nacimiento) = 
@@ -186,54 +233,48 @@
                         
                         if($anno_actual - $anno_nacimiento <= 120 
                                 and $anno_actual - $anno_nacimiento > 0) {
-                            //  la persona tiene menos de 120 años  VALIDA
+                            // La persona tiene menos de 120 años  VALIDA
                             $fecha_nacimiento = $tmp_fecha_nacimiento;
                         } elseif($anno_actual - $anno_nacimiento > 120) {
-                            //  la persona tiene mas de 120 años    NO VALIDA
+                            // La persona tiene mas de 120 años    NO VALIDA
                             $err_fecha_nacimiento = "No puedes tener más de 120 años";
-                            echo "<h1>AAAAA</h1>";
                         } elseif($anno_actual - $anno_nacimiento < 0) {
                             $err_fecha_nacimiento = "No puedes tener menos de 0 años";
-                            echo "<h1>DDDDD</h1>";
                         } elseif($anno_actual - $anno_nacimiento == 121) {
                             if($mes_actual - $mes_nacimiento < 0) {
-                                //  la persona aun no ha cumplido 121
+                                // La persona aun no ha cumplido 121
                                 $fecha_nacimiento = $tmp_fecha_nacimiento;
                             } elseif($mes_actual - $mes_nacimiento > 0) {
-                                //  la persona ya ha cumplido 121
+                                // La persona ya ha cumplido 121
                                 $err_fecha_nacimiento = "No puedes tener más de 120 años";
-                                echo "<h1>BBBBB</h1>";
                             } elseif($mes_actual - $mes_nacimiento == 0) {
                                 if($dia_actual - $dia_nacimiento < 0) {
-                                    //  la persona aun no ha cumplido 121
+                                    // La persona aun no ha cumplido 121
                                     $fecha_nacimiento = $tmp_fecha_nacimiento;
                                 } elseif($dia_actual - $dia_nacimiento >= 0) {
-                                    //  la persona ya ha cumplido 121
+                                    // La persona ya ha cumplido 121
                                     $err_fecha_nacimiento = "No puedes tener más de 120 años";
-                                    echo "<h1>CCCCC</h1>";
                                 }
                             }
                         } elseif($anno_actual - $anno_nacimiento == 0) {
                             if($mes_actual - $mes_nacimiento < 0) {
-                                //  la persona aun no nacido
+                                // La persona aun no nacido
                                 $err_fecha_nacimiento = "La persona aún no ha nacido";
-                                echo "<h1>AAAAA</h1>";
                             } elseif($mes_actual - $mes_nacimiento < 0) {
-                                //  la persona ya ha nacido
+                                // La persona ya ha nacido
                                 $fecha_nacimiento = $tmp_fecha_nacimiento;
                             } elseif($mes_actual - $mes_nacimiento == 0) {
                                 if($dia_actual - $dia_nacimiento < 0) {
-                                    //  la persona ya ha nacido
+                                    // La persona ya ha nacido
                                     $err_fecha_nacimiento = "La persona aún no ha nacido";
-                                    echo "<h1>BBBBB</h1>";
                                 } elseif($dia_actual - $dia_nacimiento >= 0) {
-                                    //  la persona ya ha cumplido 121
+                                    // La persona ya ha cumplido 121
                                     $fecha_nacimiento = $tmp_fecha_nacimiento;
                                 }
                             }
                         }
                     }
-                }
+                } */
             }
         ?>
 
