@@ -138,10 +138,10 @@
             </tr>
             <tr>
                 <td>
-                    <a href="usuarios.php">usuarios.php</a>
+                    <a href="usuario.php">usuario.php</a>
                 </td>
                 <td>
-                    Ejercicios de usuarios.
+                    Ejercicios de usuario.
                 </td>
             </tr>
         </tbody>
