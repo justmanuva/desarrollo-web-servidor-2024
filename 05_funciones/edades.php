@@ -1,5 +1,5 @@
 <?php
-    function comprobarEdad($nombre, $edad) {
+    function comprobarEdad(string $nombre, int $edad) {
         $resultado = match(true) {
             $edad < 18 => "es menor de edad",
             $edad >= 18 and $edad < 65 => "es mayor de edad",
