@@ -144,6 +144,22 @@
                     Ejercicios de usuario.
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="videojuegos.php">videojuegos.php</a>
+                </td>
+                <td>
+                    Ejercicios de videojuegos.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="equipos_liga.php">equipos_liga.php</a>
+                </td>
+                <td>
+                    Ejercicios de equipos de la liga.
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
