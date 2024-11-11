@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index de Animes</title>
+    <title>Index de Consolas</title>
     <link rel="stylesheet" type="text/css" href="../estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <?php
@@ -15,9 +15,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>Tabla de animes</h1>
+        <h1>Tabla de consolas</h1>
         <?php
-            $sql = "SELECT * FROM animes";
+            $sql = "SELECT * FROM consolas";
             // Asignarle a _conexion la funcion query (consulta)
             $resultado = $_conexion -> query($sql);
             /**
@@ -30,20 +30,20 @@
         <table class="table table-striped table-hover">
             <thead class="table-dark">
                 <tr>
-                    <th>Título</th>
-                    <th>Estudio</th>
-                    <th>Año</th>
-                    <th>Número de temporadas</th>
+                    <th>Nombre</th>
+                    <th>Fabricante</th>
+                    <th>Generación</th>
+                    <th>Unidades vendidas</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     while($fila = $resultado -> fetch_assoc()) { //Trata el resultado como un array asociativo
                         echo "<tr>";
-                        echo "<td>" . $fila["titulo"] . "</td>";
-                        echo "<td>" . $fila["nombre_estudio"] . "</td>";
-                        echo "<td>" . $fila["anno_estreno"] . "</td>";
-                        echo "<td>" . $fila["num_temporadas"] . "</td>";
+                        echo "<td>" . $fila["nombre"] . "</td>";
+                        echo "<td>" . $fila["fabricante"] . "</td>";
+                        echo "<td>" . $fila["generacion"] . "</td>";
+                        echo "<td>" . $fila["unidades_vendidas"] . "</td>";
                         echo "</tr>";
                     }
                 ?>
