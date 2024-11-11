@@ -160,6 +160,14 @@
                     Ejercicios de equipos de la liga.
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="media.php">media.php</a>
+                </td>
+                <td>
+                    Ejercicio de media de la práctica 1.
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
