@@ -122,6 +122,17 @@
                     }
                 }
             }
+
+            // NÚMERO DE JUGADORES
+            if ($tmp_numero_jugadores == "") {
+                $err_numero_jugadores = "El número de jugadores es obligatorio";
+            } else {
+                if ($tmp_numero_jugadores < 19 or $tmp_numero_jugadores > 32) {
+                    $err_numero_jugadores = "El número de jugadores debe ser de 19 a 32";
+                } else {
+                    $numero_jugadores = $tmp_numero_jugadores;
+                }
+            }
         }
     ?>
 
@@ -182,8 +193,17 @@
                 <input class="btn btn-primary" type="submit" value="Enviar">
             </div>
         </form>
+        <?php
+            if (isset($nombre) && isset($inicial) && isset($liga) && isset($femenino) && isset($ciudad) && isset($fecha_fundacion) && isset($numero_jugadores)) { ?>
+                <p><?php echo $nombre; ?></p>
+                <p><?php echo $inicial; ?></p>
+                <p><?php echo $liga; ?></p>
+                <p><?php echo $femenino; ?></p>
+                <p><?php echo $ciudad; ?></p>
+                <p><?php echo $fecha_fundacion; ?></p>
+                <p><?php echo $numero_jugadores; ?></p>
+            <?php } ?>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
