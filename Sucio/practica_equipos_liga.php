@@ -22,8 +22,10 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tmp_nombre = depurar($_POST["nombre"]);
             $tmp_inicial = depurar($_POST["inicial"]);
+            $tmp_liga = depurar($_POST["liga"]);
+            $tmp_femenino = depurar($_POST["femenino"]);
             $tmp_ciudad = depurar($_POST["ciudad"]);
-            $tmp_fecha_fundacion = depurar($_POST["fecha_funcacion"]);
+            $tmp_fecha_fundacion = depurar($_POST["fecha_fundacion"]);
             $tmp_numero_jugadores = depurar($_POST["numero_jugadores"]);
 
             // NOMBRE
@@ -53,6 +55,30 @@
                 }
             }
 
+            // LIGA
+            if ($tmp_liga == "") {
+                $err_liga = "La liga es obligatoria";
+            } else {
+                $ligas_validas = ["ea_sports", "hypermotion", "rfef"];
+                if (!in_array($tmp_liga, $ligas_validas)) {
+                    $err_liga = "Liga no válida";
+                } else {
+                    $liga = strtolower($tmp_liga);
+                }
+            }
+
+            // FEMENINO
+            if ($tmp_femenino == "") {
+                $err_femenino = "El equipo tiene que ser masculino o femenino";
+            } else {
+                $respuestas_validas = ["si", "no"];
+                if (!in_array($tmp_femenino, $respuestas_validas)) {
+                    $err_femenino = "Valores no válidos";
+                } else {
+                    $femenino = strtolower($tmp_femenino);
+                }
+            }
+
             // CIUDAD
             if ($tmp_ciudad == "") {
                 $err_ciudad = "La ciudad es obligatoria";
@@ -65,6 +91,17 @@
                 }
             }
 
+            /* Málafa C.F
+                Equipos de la liga
+                -Nombre (letras con tilde,ñ,espacios en blanco y punto), entre 3 y 20 caracteres
+                -Inicial (3 letras)
+                -Liga ("select" con opciones: LIga EA Sports, Liga Hypermotion, Liga Primera RFEF)
+                -Equipo femenino ("select" si o no)
+                -Ciudad (letras con tilde, ñ, ç y con espacios en blanco)
+                -Fecha de fundación (entre hoy y el 18 de diciembre de 1889) 
+                -Numero de jugadore entre (19 y 32)
+            */
+            
             // FECHA DE FUNDACIÓN
             if ($tmp_fecha_fundacion == "") {
                 $err_fecha_fundacion = "La fecha de fundación es obligatoria";
@@ -74,10 +111,15 @@
                     $err_fecha_fundacion = "Formato de fecha incorrecto";
                 } else {
                     $fecha_actual = date("Y-m-d");
-                    list($anno_actual, $mes_actual, $dia_actual) = explode("-", $fecha_actual);
-                    list($anno, $mes, $dia) = explode("-", $tmp_fecha_fundacion);
+                    $fecha_limite = "1889-12-18";
 
-                    if ($anno_actual - $anno <)
+                    if ($tmp_fecha_fundacion >= $fecha_actual) {
+                        $err_fecha_fundacion = "La fecha debe ser menor al día de hoy";
+                    } elseif ($tmp_fecha_fundacion < $fecha_limite) {
+                        $err_fecha_fundacion = "La fecha debe ser igual o mayor al 18-12-1889";
+                    } else {
+                        $fecha_fundacion = $tmp_fecha_fundacion;
+                    }
                 }
             }
         }
@@ -104,6 +146,14 @@
                     <option value="rfef">Liga Primer RFEF</option>
                 </select>
                 <?php if (isset($err_liga)) echo "<span class='error'>$err_liga</span>"; ?>
+            </div>
+            <div clsas="mb-3">
+                <label class="form-label">Equipo femenino</label>
+                <select class="form-select" name="femenino" id="femenino">
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+                <?php if (isset($err_femenino)) echo "<span class='error'>$err_femenino</span>"; ?>
             </div>
             <div clsas="mb-3">
                 <label class="form-label">Ciudad</label>
