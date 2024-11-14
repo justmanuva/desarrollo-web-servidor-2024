@@ -47,6 +47,10 @@
                     echo "<h1>Ok, la fecha está bien</h1>";
                 }
 
+                // Forma de optimizar la validación de fechas
+                $min_date = '1947-01-01'; 
+                $max_date = date('Y-m-d', strtotime('+5 years')); 
+
                 // filter_var($variable, validacion) Te valida si un tipo de dato es el correcto
                 if (filter_var($tmp_salario, FILTER_VALIDATE_INT) === FALSE) echo "<p>El salario debe ser un número</p>";
                 if (filter_var($tmp_email, FILTER_VALIDATE_EMAIL) === FALSE) echo "";
