@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Importante</title>
+  <title>Importante_P1</title>
   <?php
     //NOTIFICAR ERRORES
     error_reporting( E_ALL );
@@ -212,7 +212,7 @@
       ksort($asignaturas); //Lo ordena por las keys
       krsort($asignaturas); //Reverse ksort
 
-      //Inserta números entre 0 y 10
+      //Inserta números random entre 0 y 10
       $notas["Paula"] = rand(0,10);
     ?>
   

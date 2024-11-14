@@ -239,32 +239,32 @@
             <div class="mb-3">
                 <label class="form-label">DNI</label>
                 <input class="form-control" type="text" name="dni">
-                <?php if(isset($err_dni)) echo "<span class='error'>$err_dni</span>" ?>
+                <?php if(isset($err_dni)) echo "<span class='error'>$err_dni</span>"; ?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Correo electrónico</label>
                 <input class="form-control" type="text" name="correo">
-                <?php if(isset($err_correo)) echo "<span class='error'>$err_correo</span>" ?>
+                <?php if(isset($err_correo)) echo "<span class='error'>$err_correo</span>"; ?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Usuario</label>
                 <input class="form-control" type="text" name="usuario">
-                <?php if(isset($err_usuario)) echo "<span class='error'>$err_usuario</span>" ?>
+                <?php if(isset($err_usuario)) echo "<span class='error'>$err_usuario</span>"; ?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Nombre</label>
                 <input class="form-control" type="text" name="nombre">
-                <?php if(isset($err_nombre)) echo "<span class='error'>$err_nombre</span>" ?>
+                <?php if(isset($err_nombre)) echo "<span class='error'>$err_nombre</span>"; ?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Apellidos</label>
                 <input class="form-control" type="text" name="apellidos">
-                <?php if(isset($err_apellidos)) echo "<span class='error'>$err_apellidos</span>" ?>
+                <?php if(isset($err_apellidos)) echo "<span class='error'>$err_apellidos</span>"; ?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Fecha de nacimiento</label>
                 <input class="form-control" type="date" name="fecha_nacimiento">
-                <?php if(isset($err_fecha_nacimiento)) echo "<span class='error'>$err_fecha_nacimiento</span>" ?>
+                <?php if(isset($err_fecha_nacimiento)) echo "<span class='error'>$err_fecha_nacimiento</span>"; ?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Fecha de primer DNI</label>
