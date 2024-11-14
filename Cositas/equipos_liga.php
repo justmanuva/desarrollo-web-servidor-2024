@@ -156,17 +156,7 @@
                 <input class="btn btn-primary" type="submit" value="Enviar">
             </div>
         </form>
-        <?php
-            if (isset($nombre) && isset($inicial) && isset($liga) && isset($ciudad) && isset($titulos) && isset($fecha_fundacion) && isset($numero_jugadores)) { ?>
-                <p><?php echo $nombre; ?></p>
-                <p><?php echo $inicial; ?></p>
-                <p><?php echo $liga; ?></p>
-                <p><?php echo $ciudad; ?></p>
-                <p><?php echo $titulos; ?></p>
-                <p><?php echo $fecha_fundacion; ?></p>
-                <p><?php echo $numero_jugadores; ?></p>
-            <?php } ?>
-        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
