@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo anime</title>
+    <title>Ver anime</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <?php
         error_reporting( E_ALL );
@@ -19,30 +19,23 @@
 </head>
 <body>
     <div class="container">
-        <h1>Nuevo anime</h1>    
+        <h1>Editar anime anime</h1>    
         <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $titulo = $_POST["titulo"];
-                $nombre_estudio = $_POST["nombre_estudio"];
-                $anno_estreno = $_POST["anno_estreno"];
-                $num_temporadas= $_POST["num_temporadas"];
-                /**
-                 * $_FILES -> que es un array BIDIMENSIONAL
-                 */
-                // var_dump($_FILES["imagen"]);
-                $nombre_imagen = $_FILES["imagen"]["name"];
-                $ubicacion_temporal = $_FILES["imagen"]["tmp_name"];
-                $ubicacion_final = "./imagenes/$nombre_imagen";
+            echo "<h1>" . $_GET["id_anime"] . "</h1>";
 
-                move_uploaded_file($ubicacion_temporal, $ubicacion_final);
+            $id_anime = $_GET["id_anime"];
+            $sql = "SELECT * FROM animes WHERE id_anime = $id_anime";
+            $resultado = $_conexion -> query($sql);
 
-
-                $sql = "INSERT INTO animes (titulo, nombre_estudio, anno_estreno, num_temporadas, imagen)
-                    VALUES ('$titulo', '$nombre_estudio', $anno_estreno, $num_temporadas, '$ubicacion_final')";
-            
-                $_conexion -> query($sql);
-                
+            while($fila = $resultado -> fetch_assoc()) {
+                $titulo = $fila["titulo"];
+                $nombre_estudio = $fila["nombre_estudio"];
+                $anno_estreno = $fila["anno_estreno"];
+                $num_temporadas = $fila["num_temporadas"];
+                $imagen = $fila["imagen"];
             }
+
+            echo "<h1>$titulo</h1>";
 
             $sql = "SELECT * FROM estudios ORDER BY nombre_estudio";
             $resultado = $_conexion -> query($sql);
@@ -55,12 +48,12 @@
         <form class="col-6" action="" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label">Título</label>
-                <input class="form-control" type="text" name="titulo">
+                <input class="form-control" type="text" name="titulo" value="<?php echo $titulo; ?>">
             </div>
             <div class="mb-3">
                 <label class="form-label">Nombre estudio</label>
                 <select name="nombre_estudio" class="form-select">
-                    <option value="" selected disabled hidden>--- Elige el estudio ---</option>
+                    <option value="<?php echo $nombre_estudio ?>" selected hidden><?php echo $nombre_estudio ?></option>
                     <?php
                     foreach($estudios as $estudio) { ?>
                         <option value="<?php echo $estudio ?>">

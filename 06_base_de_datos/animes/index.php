@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index de Animes</title>
-    <link rel="stylesheet" type="text/css" href="../estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <?php
         error_reporting(E_ALL);
@@ -17,6 +16,14 @@
     <div class="container">
         <h1>Tabla de animes</h1>
         <?php
+            if($_SERVER["REQUEST_METHOD"] == "POST") {
+                $id_anime = $_POST["id_anime"];
+                echo "<h1>$id_anime</h1>";
+                // Borrar el anime
+                $sql = "DELETE FROM animes WHERE id_anime = $id_anime";
+                $_conexion -> query($sql);
+            }
+            
             $sql = "SELECT * FROM animes";
             // Asignarle a _conexion la funcion query (consulta)
             $resultado = $_conexion -> query($sql);
@@ -27,6 +34,7 @@
              * a los arrays
              */
         ?>
+        <a href="nuevo_anime.php" class="btn btn-secondary">Crear nuevo anime</a><br><br>
         <table class="table table-striped table-hover">
             <thead class="table-dark">
                 <tr>
@@ -34,6 +42,9 @@
                     <th>Estudio</th>
                     <th>Año</th>
                     <th>Número de temporadas</th>
+                    <th>Imagen</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +55,20 @@
                         echo "<td>" . $fila["nombre_estudio"] . "</td>";
                         echo "<td>" . $fila["anno_estreno"] . "</td>";
                         echo "<td>" . $fila["num_temporadas"] . "</td>";
+                        ?>
+                        <td>
+                            <img width="100" height="200" src="<?php echo $fila["imagen"]?>">
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="ver_anime.php?id_anime=<?php echo $fila["id_anime"] ?>">Editar</a>
+                        </td>
+                        <td>
+                            <form action="" method="post">
+                                <input type="hidden" name="id_anime" value="<?php echo $fila["id_anime"] ?>">    
+                                <input class="btn btn-danger" type="submit" value="Borrar">
+                            </form>
+                        </td>
+                        <?php
                         echo "</tr>";
                     }
                 ?>
