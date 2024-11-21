@@ -11,11 +11,6 @@
 
         require "conexion.php";
     ?>
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
