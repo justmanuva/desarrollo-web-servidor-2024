@@ -40,7 +40,6 @@
 
                 move_uploaded_file($ubicacion_temporal, $ubicacion_final);
 
-
                 $sql = "INSERT INTO animes (titulo, nombre_estudio, anno_estreno, num_temporadas, imagen)
                     VALUES ('$titulo', '$nombre_estudio', $anno_estreno, $num_temporadas, '$ubicacion_final')";
             
