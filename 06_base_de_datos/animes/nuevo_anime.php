@@ -41,15 +41,43 @@
                 move_uploaded_file($ubicacion_temporal, $ubicacion_final);
 
 
-                $sql = "INSERT INTO animes (titulo, nombre_estudio, anno_estreno, num_temporadas, imagen)
+                /* $sql = "INSERT INTO animes (titulo, nombre_estudio, anno_estreno, num_temporadas, imagen)
                     VALUES ('$titulo', '$nombre_estudio', $anno_estreno, $num_temporadas, '$ubicacion_final')";
             
-                $_conexion -> query($sql);
+                $_conexion -> query($sql); */
+                
+
+                // prepare para más capas de seguridad
+                /**
+                 * Las 3 etapas de las prepared statements
+                 *  
+                 * 1. Preparación
+                 * 2. Enlazado (binding)
+                 * 3. Ejecución
+                 */
+
+                // 1. Preparación
+                $sql = $_conexion -> prepare("INSERT INTO animes (titulo, nombre_estudio,
+                    anno_estreno, num_temporadas, imagen)
+                    VALUES (?,?,?,?,?)");
+
+                // 2. Enlazado
+                $sql -> bind_param("ssiis",
+                    $titulo,
+                    $nombre_estudio,
+                    $anno_estreno,
+                    $num_temporadas,
+                    $ubicacion_final
+                );
+
+                // 3. Ejecución
+                $sql -> execute();
                 
             }
 
             $sql = "SELECT * FROM estudios ORDER BY nombre_estudio";
             $resultado = $_conexion -> query($sql);
+            $_conexion -> close();
             $estudios = [];
 
             while($fila = $resultado -> fetch_assoc()) {
