@@ -28,8 +28,17 @@
             // echo "<h1>" . $_GET["id_anime"] . "</h1>";
 
             $id_anime = $_GET["id_anime"];
-            $sql = "SELECT * FROM animes WHERE id_anime = $id_anime";
-            $resultado = $_conexion -> query($sql);
+           /*  $sql = "SELECT * FROM animes WHERE id_anime = $id_anime";
+            $resultado = $_conexion -> query($sql); */
+
+            #1. Prepare
+            $sql = $_conexion -> prepare("SELECT * FROM animes WHERE id_anime = ?");
+            #2. Binding
+            $sql -> bind_param("i", $id_anime); #i,s,d
+            #3. Execute
+            $sql -> execute();
+            #4. Retrieve
+            $resultado = $sql -> get_result();
 
             while($fila = $resultado -> fetch_assoc()) {
                 $titulo = $fila["titulo"];
@@ -68,14 +77,36 @@
                 $anno_estreno = $_POST["anno_estreno"];
                 $num_temporadas = $_POST["num_temporadas"];
 
-                $sql = "UPDATE animes SET
+                /* $sql = "UPDATE animes SET
                     titulo = '$titulo',
                     nombre_estudio = '$nombre_estudio',
                     anno_estreno = $anno_estreno,
                     num_temporadas = $num_temporadas
                     WHERE id_anime = $id_anime
                 ";
-                $_conexion -> query($sql);
+                $_conexion -> query($sql); */
+
+                # 1. Prepare
+                $sql = $_conexion -> prepare($sql = "UPDATE animes SET
+                    titulo = ?,
+                    nombre_estudio = ?,
+                    anno_estreno = ?,
+                    num_temporadas = ?
+                    WHERE id_anime = ?
+                ");
+
+                # 2. Binding
+                $sql -> bind_param("ssiii",
+                    $titulo,
+                    $nombre_estudio,
+                    $anno_estreno,
+                    $num_temporadas,
+                    $id_anime
+                );
+
+                # 3. Execute
+                $sql -> execute();
+
             }
 
         ?>
