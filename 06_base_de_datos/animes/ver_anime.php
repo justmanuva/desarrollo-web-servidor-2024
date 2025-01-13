@@ -107,6 +107,8 @@
                 # 3. Execute
                 $sql -> execute();
 
+                $_conexion -> close();
+
             }
 
         ?>

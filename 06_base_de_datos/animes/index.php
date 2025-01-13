@@ -45,9 +45,15 @@
 
             }
             
-            $sql = "SELECT * FROM animes";
-            // Asignarle a _conexion la funcion query (consulta)
-            $resultado = $_conexion -> query($sql);
+            /* $sql = "SELECT * FROM animes";
+            $resultado = $_conexion -> query($sql); */
+
+            $sql = $_conexion -> prepare("SELECT * FROM animes");
+
+            $sql -> execute();
+
+            $resultado = $sql -> get_result();
+
             $_conexion -> close();
             /**
              * Aplicamos la función query a la conexión, donde se ejecuta la sentencia SQL hecha

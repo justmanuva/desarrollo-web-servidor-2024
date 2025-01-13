@@ -16,9 +16,17 @@
     <div class="container">
         <h1>Tabla de consolas</h1>
         <?php
-            $sql = "SELECT * FROM consolas";
-            // Asignarle a _conexion la funcion query (consulta)
-            $resultado = $_conexion -> query($sql);
+            /* $sql = "SELECT * FROM consolas";
+            $resultado = $_conexion -> query($sql); */
+
+            $sql = $_conexion -> prepare("SELECT * FROM consolas");
+
+            $sql -> execute();
+
+            $resultado = $sql -> get_result();
+
+            $_conexion -> close();
+
             /**
              * Aplicamos la función query a la conexión, donde se ejecuta la sentencia SQL hecha
              * 
