@@ -16,14 +16,8 @@
     <div class="container">
         <h1>Tabla de consolas</h1>
         <?php
-            /* $sql = "SELECT * FROM consolas";
-            $resultado = $_conexion -> query($sql); */
-
-            $sql = $_conexion -> prepare("SELECT * FROM consolas");
-
-            $sql -> execute();
-
-            $resultado = $sql -> get_result();
+            $sql = "SELECT * FROM consolas";
+            $resultado = $_conexion -> query($sql);
 
             $_conexion -> close();
 

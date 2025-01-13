@@ -45,14 +45,8 @@
 
             }
             
-            /* $sql = "SELECT * FROM animes";
-            $resultado = $_conexion -> query($sql); */
-
-            $sql = $_conexion -> prepare("SELECT * FROM animes");
-
-            $sql -> execute();
-
-            $resultado = $sql -> get_result();
+            $sql = "SELECT * FROM animes";
+            $resultado = $_conexion -> query($sql);
 
             $_conexion -> close();
             /**

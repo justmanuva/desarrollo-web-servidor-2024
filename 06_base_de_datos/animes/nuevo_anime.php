@@ -75,16 +75,8 @@
                 
             }
 
-            /* $sql = "SELECT * FROM estudios ORDER BY nombre_estudio";
-            $resultado = $_conexion -> query($sql); */
-
-            $sql -> $_conexion -> prepare("SELECT * FROM estudios ORDER BY ?");
-
-            $sql -> bind_param("s", $nombre_estudio);
-
-            $sql -> execute();
-
-            $resultado = $sql -> get_result();
+            $sql = "SELECT * FROM estudios ORDER BY nombre_estudio";
+            $resultado = $_conexion -> query($sql);
 
             $_conexion -> close();
 
