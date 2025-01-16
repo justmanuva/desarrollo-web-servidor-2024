@@ -31,37 +31,37 @@
 
     $sql -> execute();
 
-	// SELECT
+	  // SELECT
 
-	$sql = $_conexion -> prepare("SELECT * FROM animes WHERE id_anime = ?");
+    $sql = $_conexion -> prepare("SELECT * FROM animes WHERE id_anime = ?");
 
-	$sql -> bind_param("i", $id_anime);
+    $sql -> bind_param("i", $id_anime);
 
-	$sql -> execute();
+    $sql -> execute();
 
-	$resultado = $sql -> get_result();
+    $resultado = $sql -> get_result();
 
-	// UPDATE
+    // UPDATE
 
-	$sql = $_conexion ->prepare("UPDATE animes SET
-		titulo = ?,
-		nombre_estudio = ?,
-		anno_estreno = ?,
-		num_temporadas = ?,
-		WHERE id_anime = ?,
-	");
+    $sql = $_conexion ->prepare("UPDATE animes SET
+      titulo = ?,
+      nombre_estudio = ?,
+      anno_estreno = ?,
+      num_temporadas = ?,
+      WHERE id_anime = ?,
+    ");
 
-	$sql -> bind_param("ssiii",
-		$titulo,
-		$nombre_estudio,
-		$anno_estreno,
-		$num_temporadas,
-		$id_anime
-	);
+    $sql -> bind_param("ssiii",
+      $titulo,
+      $nombre_estudio,
+      $anno_estreno,
+      $num_temporadas,
+      $id_anime
+    );
 
-	$sql -> execute();
+    $sql -> execute();
 
-
+    }
     
     $sql = "SELECT * FROM animes";
     $resultado = $_conexion -> query($sql);
@@ -83,27 +83,27 @@
       <tbody>
         <?php
           while($fila = $resultado -> fetch_assoc()) {
-	    	echo "<tr>";
-	    	echo "<td>" . $fila["titulo"] . "</td>";
-			echo "<td>" . $fila["nombre_estudio"] . "</td>";
-			echo "<td>" . $fila["anno_estreno"] . "</td>";
-			echo "<td>" . $fila["num_temporadas"] . "</td>";
-	    ?>
-	    <td>
-   	      <img width="100" height="200" src="<?php echo $fila["imagen"]?>">
-        </td>
-	    <td>
-	      <a href="ver_anime.php?id_anime=<?php echo $fila["id_anime"] ?>">Editar</a>
-	    </td>
-	    <td>
-	      <form action="" method="post">
-          	<input type="hidden" name="id_anime" value="<?php echo $fila["id_anime"] ?>">
-	 		<input type="submit" value="Borrar">
-	      </form>
-	    </td>
-	    <?php
-	    echo "</tr>";
-	  }
+	    	    echo "<tr>";
+	    	    echo "<td>" . $fila["titulo"] . "</td>";
+            echo "<td>" . $fila["nombre_estudio"] . "</td>";
+            echo "<td>" . $fila["anno_estreno"] . "</td>";
+            echo "<td>" . $fila["num_temporadas"] . "</td>";
+	          ?>
+            <td>
+              <img width="100" height="200" src="<?php echo $fila["imagen"]?>">
+            </td>
+            <td>
+              <a href="ver_anime.php?id_anime=<?php echo $fila["id_anime"] ?>">Editar</a>
+            </td>
+            <td>
+              <form action="" method="post">
+                <input type="hidden" name="id_anime" value="<?php echo $fila["id_anime"] ?>">
+                <input type="submit" value="Borrar">
+              </form>
+            </td>
+            <?php
+            echo "</tr>";
+	        }
         ?>
       </tbody>
     </table>
