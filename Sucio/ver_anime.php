@@ -87,7 +87,7 @@
                 $_conexion -> query($sql); */
 
                 # 1. Prepare
-                $sql = $_conexion -> prepare($sql = "UPDATE animes SET
+                $sql = $_conexion -> prepare("UPDATE animes SET
                     titulo = ?,
                     nombre_estudio = ?,
                     anno_estreno = ?,
