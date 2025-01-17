@@ -1,25 +1,25 @@
 <?php
-$id_anime = $_GET["id_anime"];
+while ($fila = $resultado -> fetch_assoc()) {
+	
+?>
+<td>
+	<a href="ver_anime.php?id_anime=<?php echo $fila["id_anime"] ?>">Editar</a>
+</td>
+<td>
+	<form>
+		<input type="hidden" value="<?php echo $fila["id_anime"] ?>">
+		<input type="submit" value="Borrar">
+	</form>
+</td>
 
-$sql = $_conexion -> prepare("SELECT * FROM animes WHERE id_anime = ?");
-$sql -> bind_param("i", $id_anime);
-$sql -> execute();
-$resultado = $sql -> get_result();
-
-while ($fila = $resultado -> fetch-assoc()) {
-	$titulo = $fila["titulo"];
-}
-
-$sql = $_conexion -> prepare("UPDATE animes SET
-	titulo = ?,
-	nombre_estudio= ?,
-	WHERE id_anime = ?
-");
-
-$sql -> bind_param("ssiii",
-	$titulo,
-	$id_anime
-);
-
-$sql -> execute();
-
+<form>
+	<input type="text" name="titulo" value="<?php echo $titulo ?>">
+	<select name="nombre_estudio">
+		<option value="<?php echo $nombre_estudio?>" selected hidden><?php echo $nombre_estudio ?></option>
+		<?php
+		foreach ($estudios as $estudio) { ?>
+			<option value="<?php echo $estudio?>">
+				<?php echo $estudio ?>
+			</option>
+	</select>
+</form
