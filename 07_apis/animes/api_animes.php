@@ -30,9 +30,34 @@
     }
 
     function manejarGet($_conexion){
-        $sql = "SELECT * FROM animes";
-        $stmt = $_conexion -> prepare($sql);
-        $stmt -> execute();
+        if(isset($_GET["nombre_estudio"]) && ((isset($_GET["desde"]) && (isset($_GET["hasta"]))))) {
+            $sql = "SELECT * FROM animes WHERE nombre_estudio = :nombre_estudio AND anno_estreno
+                BETWEEN :desde AND :hasta";
+            $stmt = $_conexion -> prepare($sql);
+            $stmt -> execute([
+                "nombre_estudio" => $_GET["nombre_estudio"],
+                "desde" => $_GET["desde"],
+                "hasta" => $_GET["hasta"]
+            ]);
+        } else if(isset($_GET["nombre_estudio"])) {
+            $sql = "SELECT * FROM animes WHERE nombre_estudio = :nombre_estudio";
+            $stmt = $_conexion -> prepare($sql);
+            $stmt -> execute([
+                "nombre_estudio" => $_GET["nombre_estudio"],
+            ]);
+        } else if(isset($_GET["desde"]) && (isset($_GET["hasta"]))) {
+            $sql = "SELECT * FROM animes WHERE anno_estreno
+                BETWEEN :desde AND :hasta";
+            $stmt = $_conexion -> prepare($sql);
+            $stmt -> execute([
+                "desde" => $_GET["desde"],
+                "hasta" => $_GET["hasta"]
+            ]);
+        }else {
+            $sql = "SELECT * FROM animes";
+            $stmt = $_conexion -> prepare($sql);
+            $stmt -> execute();
+        }
         $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC); //Equivalencia al getResult de mysql
         echo json_encode($resultado);
     }
