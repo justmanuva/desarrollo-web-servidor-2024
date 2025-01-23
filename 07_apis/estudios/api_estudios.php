@@ -21,7 +21,7 @@
             manejarPut($_conexion, $entrada);
             break;
         case "DELETE";
-            echo json_encode(["metodo" => "delete"]);
+            manejarDelete($_conexion, $entrada);
             break;
         default:
             echo json_encode(["metodo" => "otro"]);
