@@ -10,26 +10,26 @@
      * $entrada["numero"] -> <input name="numero">
      */
 
-        switch($metodo) {
-        case "GET":
-            manejarGet($_conexion);
-            break;
-        case "POST":
-            manejarPost($_conexion, $entrada);
-            break;
-        case "PUT":
-            manejarPut($_conexion, $entrada);
-            break;
-        case "DELETE";
-            manejarDelete($_conexion, $entrada);
-            break;
-        default:
-            echo json_encode(["metodo" => "otro"]);
-            break;
-        }
+    switch($metodo) {
+    case "GET":
+        manejarGet($_conexion);
+        break;
+    case "POST":
+        manejarPost($_conexion, $entrada);
+        break;
+    case "PUT":
+        manejarPut($_conexion, $entrada);
+        break;
+    case "DELETE";
+        manejarDelete($_conexion, $entrada);
+        break;
+    default:
+        echo json_encode(["metodo" => "otro"]);
+        break;
+    }
     
     function manejarGet($_conexion){
-        if(isset($_GET["ciudad"]) && (isset($_GET["anno_fundacion"]))) {
+        if(isset($_GET["ciudad"]) && isset($_GET["anno_fundacion"])) {
             $sql = "SELECT * FROM estudios WHERE ciudad = :ciudad AND anno_fundacion = :anno_fundacion";
             $stmt = $_conexion -> prepare($sql);
             $stmt -> execute([
