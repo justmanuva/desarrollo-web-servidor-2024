@@ -1,6 +1,6 @@
 <?php
 	$metodo = $_SERVER["REQUEST_METHOD"];
-	$entrada = json_encode(file_get_contents('php://input'), true);
+	$entrada = json_decode(file_get_contents('php://input'), true);
 
 	switch ($metodo) {
 	case "GET":
@@ -28,13 +28,13 @@
 				"ciudad" => $_GET["ciudad"],
 				"anno_fundacion" => $_GET["anno_fundacion"]
 			]);
-		} else if(isset($_GET["ciudad"])) {
+		} else if (isset($_GET["ciudad"])) {
 			$sql = "SELECT * FROM estudios WHERE ciudad = :ciudad";
 			$stmt = $_conexion -> prepare($sql);
 			$stmt -> execute([
 				"ciudad" => $_GET["ciudad"]
 			]);
-		} else if(isset($_GET["anno_fundacion"])){
+		} else if (isset($_GET["anno_fundacion"])) {
 			$sql = "SELECT * FROM estudios WHERE anno_fundacion = :anno_fundacion";
 			$stmt = $_conexion -> prepare($sql);
 			$stmt -> execute([
@@ -48,20 +48,20 @@
 		$resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 		echo json_encode($resultado);
 	}
-	
+
 	function manejarPost($_conexion, $entrada) {
-		$sql = "INSERT INTO estudios (nombre_estudio, ciudad, anno_fundacion)
+		$sql = "INSERT INTO estudios(nombre_estudio, ciudad, anno_fundacion)
 			VALUES (:nombre_estudio, :ciudad, :anno_fundacion)";
 		$stmt = $_conexion -> prepare($sql);
-		$stmt -> execute([
+		$stmt -> excute([
 			"nombre_estudio" => $entrada["nombre_estudio"],
 			"ciudad" => $entrada["ciudad"],
 			"anno_fundacion" => $entrada["anno_fundacion"]
 		]);
 		if ($stmt) {
-			echo json_encode(["mensaje" => "El estudio se ha insertado correctamente"]);
+			echo json_encode(["mensaje" => "Estudio ingresado correctamente"]);
 		} else {
-			echo json_encode(["mensaje" => "Error al insertar el estudio"]);
+			echo json_encode(["mensaje" => "Error al ingresar estudio"]);
 		}
 	}
 
@@ -74,15 +74,15 @@
 		$stmt -> execute([
 			"ciudad" => $entrada["ciudad"],
 			"anno_fundacion" => $entrada["anno_fundacion"],
-			"nombre_estudio" => $entrada["nombre_estudio"]
+			"nombre_estudio" =>$entrada["nombre_estudio"]
 		]);
 		if ($stmt) {
-			echo json_encode(["mensaje" => "El estudio se ha modificado correctamente"]);
+			echo json_encode(["mensaje" => "Estudio modificado correctamente"]);
 		} else {
-			echo json_encode(["mensaje" => "Error al modificar el estudio"]);
+			echo json_encode(["mensaje" => "Error al modificar estudio"]);
 		}
 	}
-	
+
 	function manejarDelete($_conexion, $entrada) {
 		$sql = "DELETE FROM estudios WHERE nombre_estudio = :nombre_estudio";
 		$stmt = $_conexion -> prepare($sql);
@@ -90,9 +90,9 @@
 			"nombre_estudio" => $entrada["nombre_estudio"]
 		]);
 		if ($stmt) {
-			echo json_encode(["mensaje" => "El estudio se ha borrado correctamente"]);
+			echo json_encode(["mensaje" => "Estudio borrado correctamente"]);
 		} else {
-			echo json_encode(["mensaje" => "Error al borrar el estudio"]);
+			echo json_encode(["mensaje" => "Error al borrar estudio"]);
 		}
 	}
 ?>
@@ -112,7 +112,5 @@
 
 
 
-
-
-
-
+			
+	
