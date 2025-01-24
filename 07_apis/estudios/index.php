@@ -10,8 +10,27 @@
     ?>
 </head>
 <body>
+
+    <!-- 
+    2. RECOGEMOS LA CIUDAD CON GET
+    3. SI SE HA MANDADO ALGUNA CIUDAD, A LA API_URL LE CONCATENAMOS LA CIUDAD PARA QUE
+    LA API DEVUELVE LOS ESTUDIOS FILTRADOS
+    -->
+
+    <form action="" method="get">
+        <label>Ciudad: </label>
+        <input type="text" name="ciudad">
+        <input type="submit" value="Buscar">
+    </form>
+
     <?php
     $apiUrl = "http://localhost/Ejercicios/07_apis/estudios/api_estudios.php";
+
+    if (isset($_GET["ciudad"]) and !empty($_GET["ciudad"])) {
+        $ciudad = $_GET["ciudad"];
+        $apiUrl = "$apiUrl?ciudad=$ciudad";
+    }
+
     $curl = curl_init();
     // Iniciamos el curl con una URL, que va a ser $apiUrl
     curl_setopt($curl, CURLOPT_URL, $apiUrl);
