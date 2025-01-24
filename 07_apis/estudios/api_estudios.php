@@ -79,7 +79,7 @@
      function manejarPut($_conexion, $entrada) {
         $sql = "UPDATE estudios SET
             ciudad = :ciudad,
-            anno_fundacion = :anno_fundacion,
+            anno_fundacion = :anno_fundacion
             WHERE nombre_estudio = :nombre_estudio";
         $stmt = $_conexion -> prepare($sql);
         $stmt -> execute([
