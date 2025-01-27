@@ -35,6 +35,11 @@
     - lista de animes relacionados
         + Solo el nombre del anime.
         + Solo se mostrarán los relacionados que sean de type anime
+    - Añadir a los animes una lista con los productores de la serie.
+      Los productores son las empresas encargadas en producir el anime.
+      Una vez hecha la lista, mostraremos en un archivo productor.php el nombre por
+      defecto del productor, su imagen y la información sobre el 
+      productor que nos provee la api (about)
     -->
 
     <div class="container">
@@ -50,7 +55,7 @@
             <?php } ?>
         </ul><br>
         <h2>Relacionados:</h2>
-        <ul class="list-group"  >
+        <ul class="list-group">
             <?php foreach($anime["relations"] as $relacionado) {
                     foreach($relacionado["entry"] as $entrada) {
                         if ($entrada["type"] == "anime") { ?>
@@ -62,6 +67,16 @@
                     <?php }
                     }
                 } ?>
+        </ul><br>
+        <h2>Productores:</h2>
+        <ul class="list-group">
+            <?php foreach($anime["producers"] as $productor) {  ?>
+                <li class="list-group-item">
+                    <a href="productor.php?id=<?php echo $productor["mal_id"]?>">
+                        <?php echo $productor["name"]?>
+                    </a>
+                </li>
+            <?php } ?>
         </ul><br>
         <iframe width="500px" height="350px" src="<?php echo $anime["trailer"]["embed_url"]?>"></iframe>
 
