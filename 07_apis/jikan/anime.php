@@ -23,24 +23,7 @@
 
         $datos = json_decode($respuesta, true);
         $anime = $datos["data"];
-        /* print_r($anime) */
     ?>
-    <!-- 
-    MOSTRAR:
-    - titulo
-    - nota
-    - sinopsis
-    - lista de generos
-    - trailer (embed_id)
-    - lista de animes relacionados
-        + Solo el nombre del anime.
-        + Solo se mostrarán los relacionados que sean de type anime
-    - Añadir a los animes una lista con los productores de la serie.
-      Los productores son las empresas encargadas en producir el anime.
-      Una vez hecha la lista, mostraremos en un archivo productor.php el nombre por
-      defecto del productor, su imagen y la información sobre el 
-      productor que nos provee la api (about)
-    -->
 
     <div class="container">
         <h1><?php echo $anime["title"] ?></h1>
