@@ -11,31 +11,6 @@
     ?>
 </head>
 <body>
-    <!-- 
-        Radiobutton con tres opciones:
-        - Serie
-        - Película
-        - Todos 
-
-        Por defecto salen todos. Si type=(cadena vacia), salen todos
-
-        Hacerlo TODO con método GET
-
-        $tipo = $_GET["tipo"];
-        https://api.jikan.moe/v4/top/anime?type=$tipo
-
-        ----------------------------------------------
-
-        - Abajo de la página dos botones o enlaces "Anterior" y "Siguiente".
-
-        - Si se hace con enlaces (a href), añadimos detrás de la URL ?page=$loquesea
-        - Al principio del código preguntamos cuál es la página que nos da la URL, y la añadimos a la URL de la API
-
-        $page = $_GET["page"];
-        https://api.jikan.moe/v4/top/anime=page=$page
-    -->
-    
-    
     <?php
         $apiUrl = "https://api.jikan.moe/v4/top/anime";
         $page = isset($_GET["page"]) ? $_GET["page"] : 1;
