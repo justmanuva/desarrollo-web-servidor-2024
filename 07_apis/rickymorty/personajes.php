@@ -13,19 +13,14 @@
 <body>
     <?php
         $apiUrl = "https://rickandmortyapi.com/api/character";
-        /* $page = isset($_GET["page"]) ? $_GET["page"] : 1; */
         
-        /* $numero = isset($_GET["nCharacters"]) ? $_GET["nCharacters"] : ""; */
+        $cantidad = isset($_GET["page"]) ? $_GET["page"] : "";
         $genero = isset($_GET["gender"]) ? $_GET["gender"] : "";
         $especie = isset($_GET["species"]) ? $_GET["species"] : "";
         
         
-        if (isset($_GET["gender"]) && isset($_GET["species"])) { 
-            $apiUrl = "https://api.jikan.moe/v4/top/anime?species=$especie&gender=$genero";
-        } else if (isset($_GET["gender"])) {
-            $apiUrl = "https://api.jikan.moe/v4/top/anime?gender=$genero";
-        } else if (isset($_GET["species"])) {
-            $apiUrl = "https://api.jikan.moe/v4/top/anime?species=$especie";
+        if (isset($_GET["gender"]) && isset($_GET["species"]) && isset($_GET["quantity"])) { 
+            $apiUrl = "https://rickandmortyapi.com/api/character?page=$cantidad&species=$especie&gender=$genero";
         }
 
         $curl = curl_init();
@@ -36,10 +31,9 @@
 
         $datos = json_decode($respuesta, true);
         $personajes = $datos["results"];
-        /* $pagination = $datos["pagination"]; */
     ?>
     <form action="" method="get">
-        <!-- <input type="text" name="nCharacters" id="nCharacters"> -->
+        <input type="text" name="page" id="page">
         <select name="gender" id="gender">
             <option value="male">Masculino</option>
             <option value="female">Femenino</option>
@@ -58,6 +52,7 @@
                 <th>Género</th>
                 <th>Especie</th>
                 <th>Origen</th>
+                <th>Imagen</th>
             </tr>
         </thead>
         <tbody>
@@ -68,6 +63,9 @@
                         <td><?php echo $personaje["species"]?></td>
                         <td><?php echo $personaje["gender"]?></td>
                         <td><?php echo $personaje["origin"]["name"]?></td>
+                        <td>
+                            <img width="100px" src="<?php echo $personaje["image"]?>">
+                        </td>
                     </tr>
                 <?php } ?>
         </tbody>
