@@ -12,8 +12,8 @@
 </head>
 <body>
     <?php
+        // Obtener la lista de razas
         $apiUrl = "https://dog.ceo/api/breeds/list/all";
-
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $apiUrl);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -22,9 +22,22 @@
 
         $datos = json_decode($respuesta, true);
         $razas = $datos["message"];
+
+        if (isset($_GET['breed'])) {
+            $razaSeleccionada = $_GET['breed'];
+            $apiUrlImage = "https://dog.ceo/api/breed/$razaSeleccionada/images/random";
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, $apiUrlImage);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $respuestaImage = curl_exec($curl);
+            curl_close($curl);
+
+            $datosImage = json_decode($respuestaImage, true);
+            $image = $datosImage['message'];
+        }
     ?>
     <div class="container">
-        <form nethod="get" class="col-4">
+        <form method="get" class="col-4">
             <label for="breed" class="form-label">Raza:</label>
             <select name="breed" id="breed" class="form-select">
                 <?php
@@ -33,7 +46,7 @@
                             <option value="<?php echo $raza ?>">
                                 <?php echo $raza ?>
                             </option>
-                    <?php } else {
+                        <?php } else {
                             foreach($subRazas as $subRaza) {
                                 $mostrar_subRaza = $raza . " " . $subRaza;
                                 $api_subRaza = $raza . "/" . $subRaza; ?>
@@ -47,6 +60,11 @@
             </select><br>
             <input type="submit" value="Generar" class="btn btn-primary"><br><br>
         </form>
+
+        <?php
+        if (isset($image)) { ?>
+            <img src="<?php echo $image ?>" class="img-fluid">
+        <?php } ?>
     </div>
 </body>
 </html>
