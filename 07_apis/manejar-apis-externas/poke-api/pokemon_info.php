@@ -24,8 +24,7 @@
         $datos = json_decode($respuesta, true);
     ?>
     <div>
-        <img width="200px" src="<?php echo $datos["sprites"]["front_default"]?>" class="img-fluid">
-        <img width="100px" src="<?php echo $datos["sprites"]["back_default"]?>" class="img-fluid">
+        <img width="200px" src="<?php echo $datos["sprites"]["other"]["dream_world"]["front_default"]?>" class="img-fluid">
         <div id="details">
             <h3><?php echo ucwords($datos["name"])?></h3>
         </div><br>
