@@ -26,6 +26,7 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
+                <th scope="col">Orden</th>
                 <th scope="col">Nombre</th>
             </tr>
         </thead>
@@ -34,8 +35,11 @@
                 foreach($pokemons as $pokemon) { ?>
                     <tr>
                         <td scope="row">
+                            <?php echo $pokemon["entry_number"]?>
+                        </td>
+                        <td scope="row">
                             <a href="./pokemon_info.php?id=<?php echo $pokemon["entry_number"]?>">
-                                <?php echo $pokemon["pokemon_species"]["name"]?>
+                                <?php echo ucwords($pokemon["pokemon_species"]["name"])?>
                             </a>
                         </td>
                     </tr>

@@ -25,9 +25,11 @@
     ?>
     <div>
         <img width="200px" src="<?php echo $datos["sprites"]["front_default"]?>" class="img-fluid">
+        <img width="100px" src="<?php echo $datos["sprites"]["back_default"]?>" class="img-fluid">
         <div id="details">
             <h3><?php echo ucwords($datos["name"])?></h3>
-        </div>
+        </div><br>
+        <a href="./index.php" class="btn btn-primary">Volver</a>
     </div>
 </body>
 </html>
