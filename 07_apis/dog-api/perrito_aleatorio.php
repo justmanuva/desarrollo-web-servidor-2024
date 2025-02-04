@@ -23,8 +23,8 @@
         $datos = json_decode($respuesta, true);
         $random_image = $datos["message"];
     ?>
-    <div class="container text-center">
-        <a href="./perrito_aleatorio.php" class="btn btn-info">Generar</a>
+    <div class="container">
+        <br><a href="./perrito_aleatorio.php" class="btn btn-info">Generar</a><br><br>
         <img width="400px" src="<?php echo $random_image ?>"><br><br>
     </div>  
 

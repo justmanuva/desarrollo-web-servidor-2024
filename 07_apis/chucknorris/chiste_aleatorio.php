@@ -32,6 +32,7 @@
 
             $datosRandom = json_decode($respuestaRandom, true);
             $chiste = $datosRandom['value'];
+            $foto = $datosRandom['icon_url'];
         }
     ?>
     <div class="container">
@@ -48,6 +49,7 @@
 
         <?php
         if (isset($chiste)) { ?>
+            <img src="<?php echo $foto ?>"><br>
             <p><?php echo $chiste ?></p>
         <?php } ?>
     </div>
