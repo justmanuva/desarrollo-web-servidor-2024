@@ -12,7 +12,8 @@
 </head>
 <body>
     <?php
-        $apiUrl = "https://pokeapi.co/api/v2/pokedex/1/";
+        $id = $_GET["id"];
+        $apiUrl = "https://pokeapi.co/api/v2/pokemon/$id/";
         
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $apiUrl);
@@ -21,26 +22,12 @@
         curl_close($curl);
 
         $datos = json_decode($respuesta, true);
-        $pokemons = $datos["pokemon_entries"];
     ?>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Nombre</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                foreach($pokemons as $pokemon) { ?>
-                    <tr>
-                        <td scope="row">
-                            <a href="./pokemon_info.php?id=<?php echo $pokemon["entry_number"]?>">
-                                <?php echo $pokemon["pokemon_species"]["name"]?>
-                            </a>
-                        </td>
-                    </tr>
-                <?php } ?>
-        </tbody>
-    </table>
+    <div>
+        <img width="200px" src="<?php echo $datos["sprites"]["front_default"]?>" class="img-fluid">
+        <div id="details">
+            <h3><?php echo ucwords($datos["name"])?></h3>
+        </div>
+    </div>
 </body>
 </html>
