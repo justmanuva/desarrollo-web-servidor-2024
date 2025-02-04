@@ -12,7 +12,6 @@
 </head>
 <body>
     <?php
-        // Obtener la lista de razas
         $apiUrl = "https://dog.ceo/api/breeds/list/all";
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $apiUrl);
