@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Coches</title>
+    <title>Marcas</title>
 </head>
 <body>
-    <h1>Lista de coches</h1>
+    <h1>Lista de marcas</h1>
     <ol>
-        @foreach($coches as $coche)
-            <li>{{$coche}}</li>
+        @foreach($marcas as $marca)
+            <li>{{$marca}}</li>
         @endforeach
     </ol>
 </body>

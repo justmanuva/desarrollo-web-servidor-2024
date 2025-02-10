@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CocheController;
+use App\Http\Controllers\MarcaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\CocheController;
 //Si ponemos esta ruta en el localhost:8000 accedemos a las vistas estas
 //Tenemos que crear los ficheros .php en resources/views
 Route::get('/coches', [CocheController::class, 'index']);
+Route::get('/marcas', [MarcaController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');
