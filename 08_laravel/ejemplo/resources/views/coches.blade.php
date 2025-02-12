@@ -8,10 +8,22 @@
 </head>
 <body>
     <h1>Lista de coches</h1>
-    <ol>
-        @foreach($coches as $coche)
-            <li>{{$coche}}</li>
-        @endforeach
-    </ol>
+    <table>
+        <thead>
+            <tr>
+                <th>Modelo</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{-- Mostramos los coches y sus componentes más fácil con los @ --}}
+            @foreach($coches as $coche)
+                <tr>
+                    <td>{{$coche[1]}} {{$coche[0]}}</td>
+                    <td>{{ $coche[2] }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 </html>

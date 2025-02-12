@@ -16,9 +16,11 @@ use App\Http\Controllers\MarcaController;
 */
 
 //Si ponemos esta ruta en el localhost:8000 accedemos a las vistas estas
-//Tenemos que crear los ficheros .php en resources/views
+//Tenemos que crear los ficheros php en resources/views
 Route::get('/coches', [CocheController::class, 'index']);
-Route::get('/marcas', [MarcaController::class, 'index']);
+
+//Con esto hacemos referencia a todos los mensajes aparte del GET
+Route::resource('/marcas', MarcaController::class);
 
 Route::get('/', function () {
     return view('welcome');
