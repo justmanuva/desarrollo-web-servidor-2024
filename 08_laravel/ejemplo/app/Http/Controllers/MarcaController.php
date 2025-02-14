@@ -26,20 +26,21 @@ class MarcaController extends Controller
         return view("marcas/index", ["marcas" => $marcas]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('marcas/create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    //Cogemos la información del formulario, (Al darle a enviar nos envia al .store que es esto)
     public function store(Request $request)
     {
-        //
+        $marca = new Marca;
+        $marca -> marca = $request -> input("marca");
+        $marca -> ano_fundacion = $request -> input("ano_fundacion");
+        $marca -> pais = $request -> input("pais");
+        $marca -> save(); //Crea el objeto con los parámetros que les hemos indicado
+
+        return redirect('/marcas'); //Cuando se inserta, nos manda al index
     }
 
     //Para ver la información en detalle
